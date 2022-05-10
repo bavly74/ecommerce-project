@@ -13,8 +13,8 @@ if($_POST) {
 
     if($password==$confirmPass){
         $selectStmt="select * from user where username='$userName' or phone='$phoneNumber' ";
-        $res=$connect->query($selectStmt);
-    if($res->num_rows==0){
+        $result=$connect->query($selectStmt);
+    if($result->num_rows==0){
         $insertQuery= "insert into user (Fname, Lname, username, password, phone, address) 
         values ('$firstName','$lastName','$userName','$password','$phoneNumber','$address')";
         $insertResult=$connect->query($insertQuery);

@@ -14,10 +14,10 @@ if($_POST) {
 
     if($password==$confirmPass){
         $selectStmt="select * from user where (username='$userName' or phone='$phoneNumber') and not id ='$userID'";
-        $res=$connect->query($selectStmt);
-    if($res->num_rows==0){
+        $result=$connect->query($selectStmt);
+    if($result->num_rows==0){
         $updateStmt="update user set Fname='$firstName',Lname='$lastName',username='$userName',phone='$phoneNumber',address='$address',password='$password' where id='$userID'";
-        $updateRes=$connect->query($updateStmt);
+        $updateResult=$connect->query($updateStmt);
         header('location: http://localhost/ecommerce-project/home.php');
 
     }
@@ -60,9 +60,9 @@ if($_POST) {
     
 <?php
    $getUser="select * from user where id='$userID'";
-    $selectRes=$connect->query($getUser);
-    $row=$selectRes->fetch_assoc();
-  ?>
+    $selectResult=$connect->query($getUser);
+    $row=$selectResult->fetch_assoc();
+?>
 
     <section class="ftco-section">
         <div class="container">

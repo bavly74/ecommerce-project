@@ -42,7 +42,7 @@ if(isset($_GET["action"]) && isset($_SESSION["userID"])){
         }
     }
     ?>
-    
+
 <!doctype html>
 <html>
 
@@ -177,7 +177,7 @@ if(isset($_GET["action"]) && isset($_SESSION["userID"])){
 
             <div id="products">
         
-        <div class="row">
+    <div class="row">
 <?php
 $getItems="select * from item where catID=1";
 $itemRes=$connect->query($getItems);
