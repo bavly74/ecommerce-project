@@ -7,6 +7,7 @@
 </head>
 <body>
 <h1>Done</h1>
+<a href="home.php">Home</a>
 <script src="js/bootstrap.min.js"></script>
 </body>
 </html>
