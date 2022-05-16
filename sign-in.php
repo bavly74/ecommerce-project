@@ -2,10 +2,9 @@
 require_once "connect.php";
 session_start();
 if($_POST){
-
-    $email=$_POST['username'];
+    $username=$_POST['username'];
     $pass=$_POST['password'];
-    $selectStatement = "select * from user where username='$email' and password='$pass' ";
+    $selectStatement = "select * from user where username='$username' and password='$pass' ";
     $result=$connect->query($selectStatement);
     if($result->num_rows==1){
         $row=$result->fetch_assoc();
@@ -88,9 +87,6 @@ if($_POST){
                                 <button type="submit" class="btn btn-primary rounded submit p-3 px-5" style="background-color: #ca1515 !important;">SIGN IN</button>
                             </div>
                         </form>
-
-
-
                     </div>
                 </div>
             </div>
@@ -98,6 +94,7 @@ if($_POST){
     </section>
     
 
+    <!-- Copyright -->
     <script src="js/up.js"></script>
     <script src="js/app.js"></script>
 

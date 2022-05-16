@@ -1,7 +1,7 @@
 <?php 
-
-require_once "connect.php";
 require_once "header.php";
+require_once "connect.php";
+require_once "userClass.php";
 $userID=$_SESSION["userID"];
 if($_POST) {
     $firstName=$_POST['Fname'];
@@ -11,22 +11,12 @@ if($_POST) {
     $address=$_POST['address'];
     $password=$_POST['pass'];
     $confirmPass=$_POST['confirmPass'];
-
-    if($password==$confirmPass){
-        $selectStmt="select * from user where (username='$userName' or phone='$phoneNumber') and not id ='$userID'";
-        $result=$connect->query($selectStmt);
-    if($result->num_rows==0){
-        $updateStmt="update user set Fname='$firstName',Lname='$lastName',username='$userName',phone='$phoneNumber',address='$address',password='$password' where id='$userID'";
-        $updateResult=$connect->query($updateStmt);
-        header('location: http://localhost/ecommerce-project/home.php');
-
-    }
-}
-
+    $user=new user();
+    $user->setUserData($firstName,$lastName,$userName,$phoneNumber,$address,$password,$confirmPass);
+    $user->updateUserProfile($userID,$connect);
 }
 
 ?>
-
 
 <!doctype html>
 <html lang="en">
@@ -60,9 +50,9 @@ if($_POST) {
     
 <?php
    $getUser="select * from user where id='$userID'";
-    $selectResult=$connect->query($getUser);
-    $row=$selectResult->fetch_assoc();
-?>
+    $selectRes=$connect->query($getUser);
+    $row=$selectRes->fetch_assoc();
+  ?>
 
     <section class="ftco-section">
         <div class="container">
